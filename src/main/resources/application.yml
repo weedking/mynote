@@ -7,10 +7,8 @@ spring:
       active: dev
     datasource:
       url: jdbc:mysql://119.23.77.187:3306/mynote?characterEncoding=utf8
-#      url: jdbc:mysql://localhost:3306/jpa?characterEncoding=utf8
-      username: root
-      password: 123456
-#      password: 123456
+      username: lihaiming
+      password: 123321
       driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
       database: mysql
