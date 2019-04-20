@@ -21,6 +21,7 @@ public class MyController {
     public Note showNote(@RequestParam(value = "no",required = false) String no){
         int no1 = Integer.parseInt(no);
         Note note = this.noteService.getNoteByNo(no1);
+//        Note note = this.noteService.getNoteByNo(4);
         return note;
     }
 
