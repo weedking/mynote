@@ -31,7 +31,9 @@ class Toggle extends React.Component {
                 }
             }
         }
-        var url ="http://localhost:8080/showNote?no=1";
+        var preurl = "http://localhost:8080/showNote?no=";
+        var url = preurl + this.state.inputvalue;
+        // var url ="http://localhost:8080/showNote?no=1";
         var getInformation ={
             method:"POST",
             headers:{
