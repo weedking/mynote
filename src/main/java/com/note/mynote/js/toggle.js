@@ -7,6 +7,7 @@ class Toggle extends React.Component {
         this.state = {
             // isToggleOn: true,
             inputValue : '123',
+            amount: 555
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -50,19 +51,34 @@ class Toggle extends React.Component {
                     // object:json.object.list
                     // inputValue:9994
                     // inputValue:json.object.list
-                    inputValue:responseJson.title
+                    inputValue:responseJson.content
 
                 })
             })
     }
 
+    handelChange(){
+        let value=this.refs.input.value
+        this.setState({
+            inputvalue: value
+        })
+    }
+
     render() {
         return (
             <div>
-                <input value={this.state.inputValue} />
+                <input value={this.state.inputValue}/>
+                {/*<input*/}
+                    {/*type="number"*/}
+                    {/*ref={cashMoney => this.amount = cashMoney}/>*/}
+
+                <input value={this.state.amount} />
+
+                <input type="number" ref='input' onChange = {this.handelChange.bind(this)}/>
+                <p>{this.state.inputvalue}</p>
+
                 <button className='red-btn' onClick={this.changeInputValue.bind(this)} >search</button>
             </div>
-
         );
     }
 }
