@@ -69,7 +69,18 @@ class Toggle extends React.Component {
         })
     }
 
-
+    // resize() {
+    //     if (this.inputRef) {
+    //         console.log('resizing...')
+    //         this.inputRef.style.height = 'auto';
+    //         this.inputRef.style.height = this.inputRef.scrollHeight + 'px';
+    //     }
+    // }
+    //
+    // textareaHandleChange(e) {
+    //     this.props.onChange(e.target.value);
+    //     this.resize();	// 看这里
+    // }
 
     render() {
         return (
@@ -78,21 +89,9 @@ class Toggle extends React.Component {
                 <div className="leftbox">
                     左边
                 </div>
+
                 <div className="rightbox">
-                <input value={this.state.inputValue}/>
-                {/*<input*/}
-                    {/*type="number"*/}
-                    {/*ref={cashMoney => this.amount = cashMoney}/>*/}
-
-                <input value={this.state.amount} />
-
-                <input type="number" ref='input' onChange = {this.handelChange.bind(this)}/>
-                <p id='mydiv'>{this.state.inputvalue}</p>
-
-                <button className='red-btn' onClick={this.changeInputValue.bind(this)} >search</button>
-
-                {/*<h2>It is {this.state.mydate.toLocaleTimeString()}.</h2>*/}
-                <textarea></textarea>
+                    <textarea cols="80" rows="50"  className="autotextarea">123</textarea>
                 </div>
             </div>
 
