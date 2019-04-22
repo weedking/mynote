@@ -1,0 +1,41 @@
+/*.cf:after{visibility: hidden;display: block;font-size: 0;content: "";*/
+    /*clear: both;height: 0;}*/
+/**.cf{zoom: 1;}*/
+/*.fl{float: left;display: inline}*/
+/*.fr{float: right;display: inline}*/
+
+/*#doc1{width:80%;font-family: "微软雅黑";font-size: 18px;color:#fff;}*/
+/*.side{width:30%;background: antiquewhite;height: 100px}*/
+/*.main{width:70%;background: darkolivegreen;height: 100px}*/
+
+
+.container {
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+.leftbox {
+    width: 300px;  /*左侧固定宽度值*/
+    height: 100%;
+    position: absolute;
+}
+.rightbox {
+    height: 100%;
+    margin-left: 300px; /*边距值=左侧固定宽度值*/
+    position: relative;
+}
+
+
+
+body {
+    /*background-color: gray;*/
+    font-family: 'Oswald', 'Futura', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#mydiv{
+    color:yellow;
+    font-size:24px;
+}

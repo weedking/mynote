@@ -1,5 +1,7 @@
 
 // import React, { Component } from 'react';
+// require('../css/c07.css');
+
 
 class Toggle extends React.Component {
     constructor(props) {
@@ -7,7 +9,8 @@ class Toggle extends React.Component {
         this.state = {
             // isToggleOn: true,
             inputValue : '123',
-            amount: 555
+            amount: 555,
+            // mydate : new Date()
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -66,9 +69,16 @@ class Toggle extends React.Component {
         })
     }
 
+
+
     render() {
         return (
-            <div>
+
+            <div className="container">
+                <div className="leftbox">
+                    左边
+                </div>
+                <div className="rightbox">
                 <input value={this.state.inputValue}/>
                 {/*<input*/}
                     {/*type="number"*/}
@@ -77,10 +87,16 @@ class Toggle extends React.Component {
                 <input value={this.state.amount} />
 
                 <input type="number" ref='input' onChange = {this.handelChange.bind(this)}/>
-                <p>{this.state.inputvalue}</p>
+                <p id='mydiv'>{this.state.inputvalue}</p>
 
                 <button className='red-btn' onClick={this.changeInputValue.bind(this)} >search</button>
+
+                {/*<h2>It is {this.state.mydate.toLocaleTimeString()}.</h2>*/}
+                <textarea></textarea>
+                </div>
             </div>
+
+
         );
     }
 }
