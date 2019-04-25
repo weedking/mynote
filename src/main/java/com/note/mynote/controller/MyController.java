@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
@@ -53,4 +54,11 @@ public class MyController {
         return no1;//返回删除的行数
     }
 
+    @RequestMapping("/getNoteList")//查询用户
+    @ResponseBody
+    @CrossOrigin
+    public List<Note> getNoteList(){
+        return this.noteService.getNoteList();
+//        return note3;
+    }
 }

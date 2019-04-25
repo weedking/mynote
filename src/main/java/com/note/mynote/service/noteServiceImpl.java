@@ -5,6 +5,7 @@ import com.note.mynote.pojo.Note;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service("noteService")
 public class noteServiceImpl implements noteService {
@@ -49,4 +50,13 @@ public class noteServiceImpl implements noteService {
         return result;
     }
 
+
+
+//    public Note getNoteList(){
+//        return noteMapper.getNoteList();
+//    }
+
+    public List<Note> getNoteList(){
+        return  noteMapper.getNoteList();
+    }
 }

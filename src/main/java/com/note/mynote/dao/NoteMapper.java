@@ -3,6 +3,8 @@ package com.note.mynote.dao;
 import com.note.mynote.pojo.Note;
 import com.note.mynote.pojo.NoteExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.Insert;
@@ -85,4 +87,13 @@ public interface NoteMapper {
         "where NO = #{no,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Note record);
+
+    @Select({
+            "select",
+            "TITLE",
+            "from NOTE"
+    })
+    @Results({@Result(column="TITLE", property="title", jdbcType=JdbcType.VARCHAR)})
+      List<Note> getNoteList();
+//        Note getNoteList();
 }
