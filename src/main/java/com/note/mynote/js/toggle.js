@@ -1,15 +1,61 @@
+class NoteList extends React.Component{
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-// import React, { Component } from 'react';
-// require('../css/c07.css');
+    handleChange(e) {
+        this.props.onNoteListChange(e.target.value);
+    }
 
+    render() {
+        // const temperature = this.props.temperature;
+        // const scale = this.props.scale;
+        return (
+            <button>添加笔记+</button>
+        );
+    }
+
+}
+
+class NewNote extends React.Component{
+
+
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        let value=this.refs.input.value
+        this.setState({
+            inputvalue: value
+        })
+    }
+
+    render() {
+        // const temperature = this.props.temperature;
+        // const scale = this.props.scale;
+
+        // const inputValue = this.props.inputValue;
+        return (
+            <textarea cols="30" rows="30"  className="autotextarea" value={inputValue} ref='textarea' onChange = {this.handelChange.bind(this)}/>
+
+        );
+
+    }
+
+}
 
 class Toggle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             // isToggleOn: true,
-            inputValue : '123',
+            inputValue : '777',
             amount: 555,
+            initID: 1,
+
             // mydate : new Date()
         };
 
@@ -18,11 +64,7 @@ class Toggle extends React.Component {
         // this.changeInputValue = this.changeInputValue(this);
     }
 
-    handleClick() {
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
-    }
+
 
 // 请求后台数据
     changeInputValue(){
@@ -35,7 +77,8 @@ class Toggle extends React.Component {
             }
         }
         var preurl = "http://localhost:8080/showNote?no=";
-        var url = preurl + this.state.inputvalue;
+        // var url = preurl + this.state.inputvalue;
+        var url = preurl + this.state.initID;
         // var url ="http://localhost:8080/showNote?no=1";
         var getInformation ={
             method:"POST",
@@ -62,36 +105,38 @@ class Toggle extends React.Component {
             })
     }
 
-    handelChange(){
+    handelNoteListChange(){
         let value=this.refs.input.value
+        let ot=this.refs.input.value
         this.setState({
-            inputvalue: value
+            inputvalue: value,
+
         })
+
     }
 
-    // resize() {
-    //     if (this.inputRef) {
-    //         console.log('resizing...')
-    //         this.inputRef.style.height = 'auto';
-    //         this.inputRef.style.height = this.inputRef.scrollHeight + 'px';
-    //     }
-    // }
-    //
-    // textareaHandleChange(e) {
-    //     this.props.onChange(e.target.value);
-    //     this.resize();	// 看这里
-    // }
+    handleClick() {
+        this.setState(prevState => ({
+            inputValue : '999'
+        }));
+        this.handelNoteListChange()
+    }
 
     render() {
         return (
 
             <div className="container">
                 <div className="leftbox">
-                    左边
+                    {/*<NoteList onNoteListChange={this.handelNoteListChange()}/>*/}
+                    <NoteList onClick={this.handleClick}/>
+                    {this.state.inputValue}
                 </div>
 
                 <div className="rightbox">
-                    <textarea cols="80" rows="50"  className="autotextarea">123</textarea>
+                    {/*<textarea cols="80" rows="50"  className="autotextarea">123</textarea>*/}
+
+                    <NewNote> </NewNote>
+                    {/*{this.state.inputValue}*/}
                 </div>
             </div>
 
