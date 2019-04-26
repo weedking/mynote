@@ -150,7 +150,7 @@ class Toggle extends React.Component {
         fetch(url,getInformation)
             .then(response => response.json())
             .then(responseJson=>{
-                // 返回的数据 根据自己返回的json格式取值
+                // 返回的数据 根据自己返回的json格式取值.
                 debugger;
                 console.log(responseJson)
                 this.setState({
