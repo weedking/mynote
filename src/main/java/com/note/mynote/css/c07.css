@@ -48,3 +48,10 @@ body {
     color:yellow;
     font-size:24px;
 }
+
+.nondot {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align:left;
+}

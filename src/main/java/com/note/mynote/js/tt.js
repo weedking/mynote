@@ -10,34 +10,9 @@ class Toggle extends React.Component {
             amount: 555,
             content: '',
             title1:[],
-            title2:[1,2,3,4,5,6,7,8,9],
+            title2:[],
             date: new Date(),
             id: 1,
-            data : [
-                {
-                    "no": 1,
-                    "title": "星期一",
-                    "author": "小李",
-                    "content": "今天我心情挺好的1",
-                    "createTime": null
-                },
-                {
-                    "no": 2,
-                    "title": "星期二",
-                    "author": "小姜",
-                    "content": "好人有好报2",
-                    "createTime": null
-                },
-                {
-                    "no": 3,
-                    "title": "星期二",
-                    "author": "小张",
-                    "content": "想去吃个皖厨3",
-                    "createTime": null
-                },
-            ]
-
-
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -181,7 +156,12 @@ class Toggle extends React.Component {
                 debugger;
                 console.log(responseJson)
                 var items= this.state.title2
-                    items[3]=eval(responseJson)[1].title
+                for(let i=0;i<eval(responseJson).length;i++){
+                    items[i]=eval(responseJson)[i].title
+
+                }
+                    // items[3]=eval(responseJson)[1].title
+                    // items=eval(responseJson).title
                 this.setState({
                     title1:eval(responseJson)[0].title,
                     // title2:eval(responseJson)[1].title
@@ -189,14 +169,6 @@ class Toggle extends React.Component {
 
 
                 })
-
-                // return(
-                //     <div>
-                //         <h1>同意的举手</h1>
-                //
-                //     </div>
-                //
-                // );
             })
     }
 
@@ -221,17 +193,16 @@ class Toggle extends React.Component {
             <div className="container">
                 <div className="leftbox">
                     <button className='newNote' onClick={this.NewNote.bind(this)} >新建</button>
-                    <p>这是 {this.state.title1}.</p>
+                    {/*<p>这是 {this.state.title1}.</p>*/}
                     {/*<p>这是 {this.state.title2}.</p>*/}
+
                     <ul>
                         {
                             this.state.title2.map(function(item){
-                                return <li>{item}</li>
+                                return <li className="nondot">{item}</li>
 
                             })
-
                         }
-
                     </ul>,
 
 
