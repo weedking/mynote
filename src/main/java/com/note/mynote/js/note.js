@@ -2,6 +2,7 @@
 // import React, { Component } from 'react';
 
 class Toggle extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -14,13 +15,17 @@ class Toggle extends React.Component {
             date: new Date(),
             id: 1,
             listid:[],
-            mynote: [{id:1,title: '张三'}, {id:2, title: '李四'}, {id: 3, title: "王五"}]
+            // mynote: [{id:1,title: '张三'}, {id:2, title: '李四'}, {id: 3, title: "王五"}]
+            mynote: [{},{},{},{},{},{},{}],
+            // mynote:[...data]
+            clickid:''
         };
 
         // This binding is necessary to make `this` work in the callback
         // this.handleClick = this.handleClick.bind(this);
         // this.changeInputValue = this.changeInputValue(this);
         this.getNoteList=this.getNoteList.bind(this);
+        this.clickNoteTitle=this.clickNoteTitle.bind(this);
     }
 
     componentDidMount() {
@@ -133,6 +138,7 @@ class Toggle extends React.Component {
 
 //从后台获得title列表
     getNoteList(){
+        // let arr = []
         /* 查询数据的格式 */
         let filter={
             object:{
@@ -157,24 +163,34 @@ class Toggle extends React.Component {
                 // 返回的数据 根据自己返回的json格式取值.
                 debugger;
                 console.log(responseJson)
-                var items= this.state.title2 //存放笔记标题
-                var items2=this.state.listid //存放笔记id
+                // var items= this.state.title2 //存放笔记标题
+                // var items2=this.state.listid //存放笔记id
+
+
                 var midtitle = this.state.mynote
+                // var midtitle=[]
                 for(let i=0;i<eval(responseJson).length;i++){
                     // items[i]=eval(responseJson)[i].title
                     // items2[i]=eval(responseJson)[i].no
                     midtitle[i].title=eval(responseJson)[i].title
                     midtitle[i].id=eval(responseJson)[i].no
+                    midtitle[i].content=eval(responseJson)[i].content
 
                 }
+                // this.state.mynote.concat(midtitle);
                 // items[3]=eval(responseJson)[1].title
                 // items=eval(responseJson).title
+
+
+
                 this.setState({
                     title1:eval(responseJson)[0].title,
                     // title2:eval(responseJson)[1].title
-                    title2:items, //存放笔记标题
-                    listid:items2,//存放笔记id
-                    mynote:midtitle //存放笔记标题和ID
+                    // title2:items, //存放笔记标题
+                    // listid:items2,//存放笔记id
+
+                    mynote:midtitle, //存放笔记标题和ID
+
 
 
                 })
@@ -195,7 +211,14 @@ class Toggle extends React.Component {
             content: ''
         })
     }
+    clickNoteTitle(e){
+        this.setState({
+            clickid: e.target.key,
+            content: 'hhhhhhh',
+            // content: midtitle[1].title
 
+        })
+    }
 
     render() {
         return (
@@ -213,8 +236,17 @@ class Toggle extends React.Component {
                             {/*})*/}
                         {/*}*/}
                     {/*</ul>,*/}
+                    {/*{midtitle.map(u => <div key={u.id}>{u.id}:{u.title}</div>)}*/}
 
-                    {this.state.mynote.map(u => <div key={u.id}>{u.id}:{u.title}</div>)}
+                    {this.state.mynote.map(
+                        u => <div key={u.id} onClick={this.clickNoteTitle}>{u.id}:{u.title}</div>)
+                    }
+                    {this.state.inputValue}
+                    {/*{this.state.clickid}*/}
+                    {/*{this.state.mynote[2].content}*/}
+
+                    {/*{this.state.mynote.length}*/}
+
 
 
                 </div>
@@ -237,6 +269,7 @@ class Toggle extends React.Component {
                         <button className='saveNewNote' onClick={this.saveNewNote.bind(this)} >保存</button>
                         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
                         {/*{this.state.inputvalue}*/}
+
                     </p>
                     {/*笔记内容：*/}
                     {/*<p>{this.state.content}</p>*/}
