@@ -1,3 +1,4 @@
+
 // import React, { Component } from 'react';
 
 class Toggle extends React.Component {
@@ -9,11 +10,11 @@ class Toggle extends React.Component {
             amount: 555,
             content: '',
             title1:[],
-            title2:{},
+            title2:[],
             date: new Date(),
             id: 1,
-            no:0,
-            users: [{id:1,name: '张三'}, {id:2, name: '李四'}, {id: 3, name: "王五"}]
+            listid:[],
+            mynote: [{id:1,title: '张三'}, {id:2, title: '李四'}, {id: 3, title: "王五"}]
         };
 
         // This binding is necessary to make `this` work in the callback
@@ -156,10 +157,14 @@ class Toggle extends React.Component {
                 // 返回的数据 根据自己返回的json格式取值.
                 debugger;
                 console.log(responseJson)
-                var items= this.state.title2
+                var items= this.state.title2 //存放笔记标题
+                var items2=this.state.listid //存放笔记id
+                var midtitle = this.state.mynote
                 for(let i=0;i<eval(responseJson).length;i++){
-                    items[i].id=eval(responseJson)[i].no
-                    items[i].value=eval(responseJson)[i].title
+                    // items[i]=eval(responseJson)[i].title
+                    // items2[i]=eval(responseJson)[i].no
+                    midtitle[i].title=eval(responseJson)[i].title
+                    midtitle[i].id=eval(responseJson)[i].no
 
                 }
                 // items[3]=eval(responseJson)[1].title
@@ -167,7 +172,9 @@ class Toggle extends React.Component {
                 this.setState({
                     title1:eval(responseJson)[0].title,
                     // title2:eval(responseJson)[1].title
-                    title2:items
+                    title2:items, //存放笔记标题
+                    listid:items2,//存放笔记id
+                    mynote:midtitle //存放笔记标题和ID
 
 
                 })
@@ -198,19 +205,16 @@ class Toggle extends React.Component {
                     {/*<p>这是 {this.state.title1}.</p>*/}
                     {/*<p>这是 {this.state.title2}.</p>*/}
 
-                    <ul>
-                        {
-                            this.state.title2.map(function(value){
-                                return <li className="nondot" >{value}</li>
+                    {/*<ul>*/}
+                        {/*{*/}
+                            {/*// this.state.listid[1]*/}
+                            {/*this.state.title2.map(function(item){*/}
+                                {/*return <li className="nondot" key={this.state.listid}>{item}</li>*/}
+                            {/*})*/}
+                        {/*}*/}
+                    {/*</ul>,*/}
 
-                            })
-                        }
-                    </ul>
-
-
-                    <h3>用户列表</h3>
-                    {this.state.users.map(u => <div key={u.id}>{u.id}:{u.name}</div>)}
-
+                    {this.state.mynote.map(u => <div key={u.id}>{u.id}:{u.title}</div>)}
 
 
                 </div>
