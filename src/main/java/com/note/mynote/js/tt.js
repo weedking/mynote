@@ -1,3 +1,4 @@
+
 // import React, { Component } from 'react';
 
 class Toggle extends React.Component {
@@ -8,15 +9,41 @@ class Toggle extends React.Component {
             inputValue : '好人',
             amount: 555,
             content: '',
-            title1:'',
+            title1:[],
+            title2:[1,2,3,4,5,6,7,8,9],
             date: new Date(),
-            id: 1
+            id: 1,
+            data : [
+                {
+                    "no": 1,
+                    "title": "星期一",
+                    "author": "小李",
+                    "content": "今天我心情挺好的1",
+                    "createTime": null
+                },
+                {
+                    "no": 2,
+                    "title": "星期二",
+                    "author": "小姜",
+                    "content": "好人有好报2",
+                    "createTime": null
+                },
+                {
+                    "no": 3,
+                    "title": "星期二",
+                    "author": "小张",
+                    "content": "想去吃个皖厨3",
+                    "createTime": null
+                },
+            ]
+
 
         };
 
         // This binding is necessary to make `this` work in the callback
         // this.handleClick = this.handleClick.bind(this);
         // this.changeInputValue = this.changeInputValue(this);
+        this.getNoteList=this.getNoteList.bind(this);
     }
 
     componentDidMount() {
@@ -153,10 +180,23 @@ class Toggle extends React.Component {
                 // 返回的数据 根据自己返回的json格式取值.
                 debugger;
                 console.log(responseJson)
+                var items= this.state.title2
+                    items[3]=eval(responseJson)[1].title
                 this.setState({
-                    title1:eval(responseJson)[0].title
+                    title1:eval(responseJson)[0].title,
+                    // title2:eval(responseJson)[1].title
+                    title2:items
+
 
                 })
+
+                // return(
+                //     <div>
+                //         <h1>同意的举手</h1>
+                //
+                //     </div>
+                //
+                // );
             })
     }
 
@@ -181,15 +221,20 @@ class Toggle extends React.Component {
             <div className="container">
                 <div className="leftbox">
                     <button className='newNote' onClick={this.NewNote.bind(this)} >新建</button>
-                    <h2>这是 {this.state.title1}.</h2>
-                    {/*{this.changeInputValue.bind(this)}*/}
-                    {/*<ul>*/}
-                        {/*{*/}
-                            {/*title.map(function (title) {*/}
-                                {/*return <li>{title}</li>*/}
-                            {/*})*/}
-                        {/*}*/}
-                    {/*</ul>*/}
+                    <p>这是 {this.state.title1}.</p>
+                    {/*<p>这是 {this.state.title2}.</p>*/}
+                    <ul>
+                        {
+                            this.state.title2.map(function(item){
+                                return <li>{item}</li>
+
+                            })
+
+                        }
+
+                    </ul>,
+
+
                 </div>
 
                 <div className="rightbox">

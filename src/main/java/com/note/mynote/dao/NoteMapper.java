@@ -90,10 +90,16 @@ public interface NoteMapper {
 
     @Select({
             "select",
-            "TITLE",
+            "NO, TITLE, AUTHOR, CONTENT, CREATE_TIME",
             "from NOTE"
     })
-    @Results({@Result(column="TITLE", property="title", jdbcType=JdbcType.VARCHAR)})
+    @Results({
+            @Result(column="NO", property="no", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="TITLE", property="title", jdbcType=JdbcType.VARCHAR),
+            @Result(column="AUTHOR", property="author", jdbcType=JdbcType.VARCHAR),
+            @Result(column="CONTENT", property="content", jdbcType=JdbcType.VARCHAR),
+            @Result(column="CREATE_TIME", property="createTime", jdbcType=JdbcType.TIMESTAMP)
+    })
       List<Note> getNoteList();
 //        Note getNoteList();
 }
