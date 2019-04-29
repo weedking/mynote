@@ -1,4 +1,3 @@
-
 // import React, { Component } from 'react';
 
 class Toggle extends React.Component {
@@ -211,10 +210,11 @@ class Toggle extends React.Component {
             content: ''
         })
     }
-    clickNoteTitle(e){
+
+    clickNoteTitle(kk){
         this.setState({
-            clickid: e.target.key,
-            content: 'hhhhhhh',
+            // clickid: e.target.key,
+            content: kk,
             // content: midtitle[1].title
 
         })
@@ -229,17 +229,17 @@ class Toggle extends React.Component {
                     {/*<p>这是 {this.state.title2}.</p>*/}
 
                     {/*<ul>*/}
-                        {/*{*/}
-                            {/*// this.state.listid[1]*/}
-                            {/*this.state.title2.map(function(item){*/}
-                                {/*return <li className="nondot" key={this.state.listid}>{item}</li>*/}
-                            {/*})*/}
-                        {/*}*/}
+                    {/*{*/}
+                    {/*// this.state.listid[1]*/}
+                    {/*this.state.title2.map(function(item){*/}
+                    {/*return <li className="nondot" key={this.state.listid}>{item}</li>*/}
+                    {/*})*/}
+                    {/*}*/}
                     {/*</ul>,*/}
                     {/*{midtitle.map(u => <div key={u.id}>{u.id}:{u.title}</div>)}*/}
 
                     {this.state.mynote.map(
-                        u => <div key={u.id} onClick={this.clickNoteTitle}>{u.id}:{u.title}</div>)
+                        u => <div key={u.id} onClick={this.clickNoteTitle.bind(this,u.id)}>{u.id}:{u.title}</div>)
                     }
                     {this.state.inputValue}
                     {/*{this.state.clickid}*/}
