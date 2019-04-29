@@ -211,10 +211,10 @@ class Toggle extends React.Component {
         })
     }
 
-    clickNoteTitle(kk){
+    clickNoteTitle(id,con){
         this.setState({
             // clickid: e.target.key,
-            content: kk,
+            content: con,
             // content: midtitle[1].title
 
         })
@@ -239,9 +239,9 @@ class Toggle extends React.Component {
                     {/*{midtitle.map(u => <div key={u.id}>{u.id}:{u.title}</div>)}*/}
 
                     {this.state.mynote.map(
-                        u => <div key={u.id} onClick={this.clickNoteTitle.bind(this,u.id)}>{u.id}:{u.title}</div>)
+                        u => <div key={u.id} onClick={this.clickNoteTitle.bind(this,u.id,u.content)}>{u.id}:{u.title}</div>)
                     }
-                    {this.state.inputValue}
+                    {/*{this.state.inputValue}*/}
                     {/*{this.state.clickid}*/}
                     {/*{this.state.mynote[2].content}*/}
 
